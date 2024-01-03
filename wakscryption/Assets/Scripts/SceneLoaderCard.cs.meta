@@ -1,0 +1,19 @@
+fileFormatVersion: 2
+guid: f4910b929aca1f940b58c8e1fff33490
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sceneText: {instanceID: 0}
+  - targetArea: {instanceID: 0}
+  - crossIcon: {instanceID: 0}
+  - emptyCard: {instanceID: 0}
+  - selectedCard: {instanceID: 0}
+  - brightCard: {instanceID: 0}
+  - brightSelectedCard: {instanceID: 0}
+  - brightCross: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
