@@ -11,6 +11,6 @@ public class UIStateController : MonoBehaviour
             PlayerPrefs.SetInt("FullScreen", Screen.fullScreen ? 1 : 0);
             PlayerPrefs.Save();
         }
-        ChangeResolution.Instance.LoadUIState();
+        //ChangeResolution.Instance.LoadUIState();
     }
 }
