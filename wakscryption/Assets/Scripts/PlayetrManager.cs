@@ -31,6 +31,8 @@ public class PlayetrManager : MonoBehaviour
     GameObject dialogue;
     [SerializeField]
     TMP_InputField idongspeed;
+    [SerializeField]
+    TMP_InputField playerki; //플레이어의 키
     bool esc = false;
     bool gaot = false;
     bool setcan = false;
@@ -64,7 +66,9 @@ public class PlayetrManager : MonoBehaviour
                 }
         }
         idongguri = float.Parse(idongspeed.text);
-        transform.rotation = Quaternion.Euler(0, rotaion, 0);
+        P2.transform.position = new Vector3(P2.transform.position.x, float.Parse(playerki.text), P2.transform.position.z);
+        P3.transform.position = new Vector3(P3.transform.position.x, float.Parse(playerki.text), P3.transform.position.z);
+        transform.position = new Vector3(transform.position.x, float.Parse(playerki.text), transform.position.z);
         P2.transform.rotation = Quaternion.Euler(0, realrotaion, 0);
         P3.transform.rotation = Quaternion.Euler(0, realrotaion, 0);
         if (Input.GetKeyDown(KeyCode.D) && !esc)
@@ -137,45 +141,26 @@ public class PlayetrManager : MonoBehaviour
 
     IEnumerator rotation(bool right)
     {
-        for (int ik = 0; ik < 10; ik++)
-        {
-            if (right)
-            {
-                rotaion += 9;
-            }
-            else
-            {
-                rotaion -= 9;
-            }
-
-            yield return new WaitForSeconds(kaiten_speed);
-        }
-        if (right)
-        {
-            realrotaion += 90;
-        }
-        else
-        {
-            realrotaion -= 90;
-        }
         float currentTime = 0.0f;
         float percent = 0.0f;
-
+        int start = rotaion;
+        int end = right ? rotaion + 90 : rotaion - 90;
         while (percent < 1)
         {
             currentTime += Time.deltaTime;
-            percent = currentTime / fadeTime; // fadeTime을 어떤 컴퓨터에서 실행하더라도 일정한 값이 나올 수 있게 만든게 percent
-            
-            Color color = titlehamyun.color;
-            color.a = Mathf.Lerp(start, end, percent);
-            titlehamyun.color = color;
+            percent = currentTime / kaiten_speed; // fadeTime을 어떤 컴퓨터에서 실행하더라도 일정한 값이 나올 수 있게 만든게 percent
+            float rrotaion;
+            rrotaion = Mathf.Lerp(start, end, percent);
+            transform.rotation = Quaternion.Euler(0, rrotaion, 0);
 
             yield return null;
         }
+        rotaion = end;
+        realrotaion = rotaion;
     }
 
-    IEnumerator idong(bool foward)
-    {
+    IEnumerator idong(bool foward) //기획 : ai 아이디어 : ai 코드 작성 : ai 코드 수정 : 인간.
+    { //158
         float journey = 0f; // 초기 이동 거리를 0으로 설정합니다.
         Vector3 start = P2.transform.position; // 시작 위치를 현재 위치로 설정합니다.
         Vector3 end = foward ? start + P2.transform.forward * idongguri : start - P2.transform.forward * idongguri;
@@ -190,34 +175,3 @@ public class PlayetrManager : MonoBehaviour
         transform.position = P3.transform.position;
     }
 }
-//Vector3 nowposition = transform.position;
-//float currentTime = 0.0f;
-//float percent = 0.0f;
-//    if (foward)
-//    {
-//    while (percent < idongguri)
-//    {
-//        currentTime += Time.deltaTime;
-//        print(Time.deltaTime);
-//        percent = currentTime / move_speed; //move_Speed를 각자 컴퓨터의 프레임에 맞게 보정한 값
-//        transform.position = nowposition;
-//        this.transform.Translate(new Vector3(0, 0, Mathf.Lerp(0, idongguri, percent)));
-//        yield return null;
-//    }
-//        transform.position = nowposition;
-//        this.transform.Translate(new Vector3(0, 0, idongguri));
-
-//    }
-//    else
-//    {
-//        while (percent < idongguri)
-//        {
-//            currentTime += Time.deltaTime;
-//            percent = currentTime / move_speed;
-//            transform.position = nowposition;
-//            this.transform.Translate(new Vector3(0, 0, -Mathf.Lerp(0, idongguri, percent)));
-//            yield return null;
-//        }
-//        transform.position = nowposition;
-//        this.transform.Translate(new Vector3(0, 0, -idongguri));
-//}
