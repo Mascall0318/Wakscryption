@@ -147,6 +147,7 @@ public class PlayetrManager : MonoBehaviour
             {
                 rotaion -= 9;
             }
+
             yield return new WaitForSeconds(kaiten_speed);
         }
         if (right)
@@ -156,6 +157,20 @@ public class PlayetrManager : MonoBehaviour
         else
         {
             realrotaion -= 90;
+        }
+        float currentTime = 0.0f;
+        float percent = 0.0f;
+
+        while (percent < 1)
+        {
+            currentTime += Time.deltaTime;
+            percent = currentTime / fadeTime; // fadeTime을 어떤 컴퓨터에서 실행하더라도 일정한 값이 나올 수 있게 만든게 percent
+            
+            Color color = titlehamyun.color;
+            color.a = Mathf.Lerp(start, end, percent);
+            titlehamyun.color = color;
+
+            yield return null;
         }
     }
 
