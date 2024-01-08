@@ -32,6 +32,8 @@ public class PlayetrManager : MonoBehaviour
     [SerializeField]
     TMP_InputField idongspeed;
     [SerializeField]
+    TMP_InputField playergogae; //플레이어의 rotation X 조절 인풋
+    [SerializeField]
     TMP_InputField playerki; //플레이어의 키
     bool esc = false;
     bool gaot = false;
@@ -89,6 +91,10 @@ public class PlayetrManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.A) && !esc)
         {
             StartCoroutine(rotation(false));
+        }
+        if (Input.GetKeyDown(KeyCode.R) && !esc)
+        {
+            transform.rotation = Quaternion.Euler(float.Parse(playergogae.text), realrotaion, 0);
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
