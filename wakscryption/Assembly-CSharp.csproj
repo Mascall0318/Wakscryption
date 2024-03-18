@@ -98,7 +98,6 @@
     <Compile Include="Assets\Scripts\Typer.cs" />
     <Compile Include="Assets\Scripts\CursorManagertest.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
-    <Compile Include="Assets\Scripts\tablemanager.cs" />
     <Compile Include="Assets\Scripts\ClickText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
